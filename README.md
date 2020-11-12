@@ -28,7 +28,7 @@ Requerimientos:
 4) Crear un volumen para MongoDB utilizando el siguiente comando `docker volume create data-mongodb`
 5) Ejectue el stack `docker-compose -f zk-single-kafka-single_mongo.yml up`
 6) Debemos crear un topic, ejecutar el comando `python3.7 create_topic.py` *(Nota: Tu comando python puede diferir, revisar el binario)*
-7) Editar el archivo `producer.py` y agregar completar con los datos token y secrets otorgados por Twitter.
+7) Editar el archivo `producer.py` y completar con los datos token y secrets otorgados por Twitter.
    - access_token 
    - access_token_secret
    - consumer_key
