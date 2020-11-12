@@ -24,7 +24,7 @@ Requerimientos:
 
 1) Clonar el repositorio
 2) Acceder al directorio `cd kafka_demo`
-3) ejecutar `pip install requirements.txt`
+3) ejecutar `pip install -r requirements.txt`
 4) Crear un volumen para MongoDB utilizando el siguiente comando `docker volume create data-mongodb`
 5) Ejectue el stack `docker-compose -f zk-single-kafka-single_mongo.yml up`
 6) Debemos crear un topic, ejecutar el comando `python3.7 create_topic.py` *(Nota: Tu comando python puede diferir, revisar el binario)*
@@ -33,6 +33,6 @@ Requerimientos:
    - access_token_secret
    - consumer_key
    - consumer_secret 
-8) Abra una nueva consola y ejecute el comando `python3.7 producer.py` 
-9)  Abrir una consola o tab y ejecutar el consumer mediante el siguiente comando `python3.7 consumer.py`
+8) Abrir una nueva consola y ejecutar el comando `python3.7 producer.py` 
+9) Abrir una consola o tab y ejecutar el consumer mediante el siguiente comando `python3.7 consumer.py`
 10) Abrir el cliente de MongoDB y acceder a la Base Twitter y a la collection Data para realizar consultas.
