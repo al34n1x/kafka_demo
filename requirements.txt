@@ -1,4 +1,4 @@
-kafka
+kafka-python
 confluent_kafka
 tweepy
 pymongo

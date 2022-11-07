@@ -1,29 +1,47 @@
-from tweepy import StreamListener
-from tweepy import OAuthHandler
-from tweepy import Stream
+import tweepy
 from kafka import KafkaProducer
+import logging
 
+"""API ACCESS KEYS"""
+
+consumerKey = ""
+consumerSecret = ""
+accessToken = ""
+accessTokenSecret = ""
 
 producer = KafkaProducer(bootstrap_servers='localhost:9092')
-access_token = ""
-access_token_secret = ""
-consumer_key = ""
-consumer_secret = ""
-topic_name = "twitter"
-class StdOutListener(StreamListener):
-  def on_data(self, data):
-    producer.send(topic_name, str.encode(data))
-    print(data)
-    return True
+search_term = 'Bitcoin'
+topic_name = 'twitter'
 
-  def on_error(self, status):
-    print(status)
-  
+
+def twitterAuth():
+    # create the authentication object
+    authenticate = tweepy.OAuthHandler(consumerKey, consumerSecret)
+    # set the access token and the access token secret
+    authenticate.set_access_token(accessToken, accessTokenSecret)
+    # create the API object
+    api = tweepy.API(authenticate, wait_on_rate_limit=True)
+    return api
+
+
+class TweetListener(tweepy.Stream):
+
+    def on_data(self, raw_data):
+        logging.info(raw_data)
+        producer.send(topic_name, value=raw_data)
+        return True
+
+    def on_error(self, status_code):
+        if status_code == 420:
+            # returning False in on_data disconnects the stream
+            return False
+
+    def start_streaming_tweets(self, search_term):
+        self.filter(track=search_term, stall_warnings=True, languages=["en"])
+
+
+# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-  while True:
-    l = StdOutListener()
-    auth = OAuthHandler(consumer_key, consumer_secret)
-    auth.set_access_token(access_token, access_token_secret)
-    stream = Stream(auth, l)
-    stream.filter(track=['#BTC', '#btc', '#bitcoin', '#BITCOIN', '#Bitcoin'],languages=["en"])
-               
+    twitter_stream = TweetListener(consumerKey, consumerSecret, accessToken, accessTokenSecret)
+    twitter_stream.start_streaming_tweets(search_term)
+
