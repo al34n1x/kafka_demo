@@ -15,7 +15,7 @@ Requerimientos:
 - Docker Compose
 - Python 3.7
 - pip (Gestor de paquetes de python)
-- Cuenta de desarrollador de Twitter, para mallor información referirse al siguiente artículo [Twitter Dev Account](https://dev.to/sumedhpatkar/beginners-guide-how-to-apply-for-a-twitter-developer-account-1kh7)
+- Cuenta de desarrollador de Twitter, para mayor información referirse al siguiente artículo [Twitter Dev Account](https://dev.to/sumedhpatkar/beginners-guide-how-to-apply-for-a-twitter-developer-account-1kh7)
 - Cliente MongoDB (e.g. Studio3T)
 - Datos de Conexión MongoDB `mongodb://localhost:27017` No posee usuario / No posee Password
 
