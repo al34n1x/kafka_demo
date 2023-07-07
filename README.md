@@ -3,13 +3,6 @@
 Author: Ale Casas [AL34N1X]
 Kafka stack based on Stephane Maarek’s project [kafka-stack-docker-compose](https://github.com/simplesteph/kafka-stack-docker-compose)
 
-El siguiente ejercicio tiene como objetivo introducir al alumno en los siguientes tópicos
-
-1) Docker. Continuando nuestro primer acercamiento a infraestructura y contrainers, la idea es poder seguir utilizando tecnologías cloud native que nos permitan trabajar de forma ágil y consistente.
-2) Introducción a Kafka, componentes básicos y casos de uso.
-3) Como los producer y consumers interactuan con Kafka
-4) Implementar una solución que tomando datos desde la API de Twitter, los mismos se stremean en tiempo real a Kafka desde el producer, y los consumers tomen esos datos y los almacenen en MongoDB
-
 The following exercise aims to introduce the learner to the following topics:
 
 1) Docker. Continuing our first approach to infrastructure and contrainers, the idea is to be able to continue using cloud native technologies that allow us to work in an agile and consistent way.
@@ -28,8 +21,7 @@ Requirements:
 - MongoDB Client (e.g. Studio3T)
 - MongoDB connection data `mongodb://localhost:27017` 
 
-
-## Instalación y ejecución
+## Building your stack
 
 1) Clone repository or download the zip file
 2) Get into the directory `cd kafka_demo`
