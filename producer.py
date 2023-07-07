@@ -1,4 +1,6 @@
-import tweepy
+#import tweepy
+from tweepy import StreamingClient
+from tweepy import StreamRule
 from kafka import KafkaProducer
 import logging
 
@@ -6,12 +8,13 @@ import logging
 
 consumerKey = ""
 consumerSecret = ""
+bearer_token = ""
 accessToken = ""
 accessTokenSecret = ""
 
 producer = KafkaProducer(bootstrap_servers='localhost:9092')
-search_term = 'Bitcoin'
 topic_name = 'twitter'
+rules = StreamRule("#bitcoin")
 
 
 def twitterAuth():
@@ -24,8 +27,8 @@ def twitterAuth():
     return api
 
 
-class TweetListener(tweepy.Stream):
 
+class TweetListener(StreamingClient):
     def on_data(self, raw_data):
         logging.info(raw_data)
         producer.send(topic_name, value=raw_data)
@@ -36,12 +39,9 @@ class TweetListener(tweepy.Stream):
             # returning False in on_data disconnects the stream
             return False
 
-    def start_streaming_tweets(self, search_term):
-        self.filter(track=search_term, stall_warnings=True, languages=["en"])
-
-
-# Press the green button in the gutter to run the script.
+   
 if __name__ == '__main__':
-    twitter_stream = TweetListener(consumerKey, consumerSecret, accessToken, accessTokenSecret)
-    twitter_stream.start_streaming_tweets(search_term)
-
+  while True:
+    client = TweetListener(bearer_token)           
+    client.add_rules(rules)
+    client.filter()

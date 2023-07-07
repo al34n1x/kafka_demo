@@ -6,12 +6,13 @@ from tweepy import StreamingClient
 from tweepy import StreamRule
 #import tweepy
 
+
 producer = KafkaProducer(bootstrap_servers='localhost:9092')
-access_token = ""
-access_token_secret = ""
+accessToken = ""
+accessTokenSecret = ""
 bearer_token = ""
-consumer_key = ""
-consumer_secret = ""
+consumerKey = ""
+consumerSecret = ""
 topic_name = "twitter"
 rules = StreamRule("#nerdearla")
 

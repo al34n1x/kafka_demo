@@ -17,4 +17,4 @@ for topic, f in fs.items():
         print("Topic {} created".format(topic))
     except Exception as e:
         print("Failed to create topic {}: {}".format(topic, e))
-view raw
+#view raw
