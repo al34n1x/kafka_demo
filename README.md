@@ -37,9 +37,24 @@ Requirements:
    - consumer_secret 
 8) Open a new terminal and run the producer command `python producer.py` 
 9) Open a new terminal and run the consumer command `python consumer.py`
-10) After a while click `CTRL + C` and stop the `producer.py` script
+10) After a while click `CTRL + C` and stop the `producer.py` and the `consumer.py`scripts
 11) Open your MongoDB GUI and take a look to the new Database and collections created
 
 ![](./img/twitter.png)
 
 
+## Alternative (Synthetic Data)
+
+As you know, Twitter (now X) has introduced several changes on how to gain developer access.
+If you face issues requesting Dev privileges to your acccount, you can use the sample data provided in this repository to simulate data streaming.
+
+1) Clone repository or download the zip file
+2) Get into the directory `cd kafka_demo`
+3) Run `pip install -r requirements.txt`
+4) Create a MongoDB volume running the following command `docker volume create data-mongodb`
+5) Get into the directory `kafka-stack-docker-compose` and run the docker-compose stack `docker-compose -f zk-single-kafka-single_mongo.yml up`
+6) Create the twitter Topic `python create_sample_topic.py` 
+7) Open a new terminal and run the producer command `python sample_producer.py` 
+8) Open a new terminal and run the consumer command `python sample_consumer.py`
+9) After a while click `CTRL + C` and stop the `sample_producer.py` and the `sample_consumer.py`scripts
+10) Open your MongoDB GUI and take a look to the new Database and collections created
